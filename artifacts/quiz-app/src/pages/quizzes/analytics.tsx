@@ -1,5 +1,5 @@
 import { useParams, Link } from "wouter";
-import { useGetQuizPerformance, getGetQuizPerformanceQueryKey, useGetQuiz } from "@workspace/api-client-react";
+import { useGetQuizPerformance, getGetQuizPerformanceQueryKey, useGetQuiz, getGetQuizQueryKey } from "@workspace/api-client-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Users, Target, TrendingUp, TrendingDown, CheckCircle2 } from "lucide-react";
@@ -8,7 +8,7 @@ export default function QuizAnalytics() {
   const params = useParams();
   const quizId = Number(params.id);
 
-  const { data: quiz } = useGetQuiz(quizId, { query: { enabled: !!quizId } });
+  const { data: quiz } = useGetQuiz(quizId, { query: { enabled: !!quizId, queryKey: getGetQuizQueryKey(quizId) } });
   const { data: analytics, isLoading } = useGetQuizPerformance(quizId, {
     query: { enabled: !!quizId, queryKey: getGetQuizPerformanceQueryKey(quizId) }
   });

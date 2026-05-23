@@ -42,7 +42,7 @@ export default function TakeQuiz() {
   const queryClient = useQueryClient();
 
   const { data: activeAttempt } = useGetAttempt(attemptId || 0, {
-    query: { enabled: !!attemptId && step === "quiz" || step === "result" }
+    query: { enabled: !!(attemptId && (step === "quiz" || step === "result")), queryKey: getGetAttemptQueryKey(attemptId || 0) }
   });
 
   const handleStart = async (e: React.FormEvent) => {
@@ -77,19 +77,18 @@ export default function TakeQuiz() {
   };
 
   useEffect(() => {
-    if (step === "quiz" && timeLeft > 0) {
-      const timer = setInterval(() => {
-        setTimeLeft(prev => {
-          if (prev <= 1) {
-            clearInterval(timer);
-            handleSubmit();
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
-      return () => clearInterval(timer);
-    }
+    if (!(step === "quiz" && timeLeft > 0)) return;
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          handleSubmit();
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(timer);
   }, [step, timeLeft]);
 
   const handleSubmit = async () => {
@@ -302,7 +301,7 @@ export default function TakeQuiz() {
               {activeAttempt.passed ? 'Passed' : 'Failed'}
             </div>
             <p className="text-muted-foreground mt-6 text-sm">
-              Thank you, {activeAttempt.candidateName}. You can now close this window.
+              Thank you, {activeAttempt.candidate.name}. You can now close this window.
             </p>
           </CardContent>
           <CardFooter className="flex justify-center bg-muted/30 p-4 border-t">

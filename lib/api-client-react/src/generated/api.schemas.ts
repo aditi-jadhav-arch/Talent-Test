@@ -250,6 +250,31 @@ export interface RecentAttempt {
   completedAt: string | null;
 }
 
+export interface AdminLoginBody {
+  username: string;
+  password: string;
+}
+
+export interface CandidateLoginBody {
+  email: string;
+}
+
+export type AuthUserRole = typeof AuthUserRole[keyof typeof AuthUserRole];
+
+
+export const AuthUserRole = {
+  admin: 'admin',
+  candidate: 'candidate',
+} as const;
+
+export interface AuthUser {
+  id: number;
+  name: string;
+  /** @nullable */
+  email?: string | null;
+  role: AuthUserRole;
+}
+
 export type ListQuizzesParams = {
 status?: string;
 category?: string;

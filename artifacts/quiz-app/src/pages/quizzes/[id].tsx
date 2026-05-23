@@ -38,7 +38,7 @@ export default function QuizDetail() {
   const [isAdding, setIsAdding] = useState(false);
   const [newQuestion, setNewQuestion] = useState({
     text: "",
-    type: "multiple_choice" as const,
+    type: "multiple_choice" as "multiple_choice" | "true_false" | "short_answer",
     points: 1,
     options: ["", "", "", ""],
     correctAnswer: "0"

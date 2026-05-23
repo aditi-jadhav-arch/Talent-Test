@@ -4,19 +4,28 @@ import {
   LayoutDashboard, 
   FileQuestion, 
   Users, 
-  ClipboardList, 
-  PlayCircle 
+  ClipboardList,
+  LogOut,
+  ChevronDown,
 } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function Layout({ children }: { children: ReactNode }) {
   const [location] = useLocation();
+  const { user, logout } = useAuth();
 
   const navItems = [
     { href: "/", label: "Dashboard", icon: LayoutDashboard },
     { href: "/quizzes", label: "Quizzes", icon: FileQuestion },
     { href: "/candidates", label: "Candidates", icon: Users },
     { href: "/attempts", label: "Attempts", icon: ClipboardList },
-    { href: "/take-quiz", label: "Take Quiz", icon: PlayCircle },
   ];
 
   return (
@@ -53,6 +62,29 @@ export function Layout({ children }: { children: ReactNode }) {
             );
           })}
         </nav>
+
+        {/* User footer */}
+        <div className="p-4 border-t border-sidebar-border">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="w-full justify-between px-3 text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground" data-testid="button-user-menu">
+                <div className="flex items-center gap-2">
+                  <div className="size-6 rounded bg-primary/20 text-primary flex items-center justify-center text-xs font-semibold uppercase">
+                    {user?.name?.[0] ?? "A"}
+                  </div>
+                  <span className="text-sm font-medium">{user?.name ?? "Admin"}</span>
+                </div>
+                <ChevronDown className="size-3.5 opacity-60" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-44">
+              <DropdownMenuItem className="gap-2 text-destructive focus:text-destructive cursor-pointer" onClick={logout} data-testid="menu-item-logout">
+                <LogOut className="size-4" />
+                Sign Out
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </aside>
 
       {/* Mobile Navbar */}
