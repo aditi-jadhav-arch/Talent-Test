@@ -330,16 +330,16 @@ export default function LandingPage() {
             {[
               {
                 text: "RecruIQ completely changed how we screen candidates. We cut our technical interview workload by 60% and the quality of hires improved dramatically.",
-                name: "Sarah Mitchell",
+                name: "Ananya Sharma",
                 role: "Head of Talent, Meridian Tech",
-                initials: "SM",
+                initials: "AS",
                 color: "linear-gradient(135deg, #667eea, #764ba2)",
               },
               {
                 text: "The analytics dashboard is incredible. We can instantly see which questions trip candidates up and adjust our quizzes accordingly. It's data-driven hiring done right.",
-                name: "David Okonkwo",
+                name: "Rohan Mehta",
                 role: "Recruitment Manager, Apex Financial",
-                initials: "DO",
+                initials: "RM",
                 color: "linear-gradient(135deg, #0d72d6, #38bdf8)",
               },
               {
