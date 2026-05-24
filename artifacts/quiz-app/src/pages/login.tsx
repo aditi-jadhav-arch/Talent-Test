@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useLocation } from "wouter";
+import { useState, useEffect } from "react";
+import { useLocation, useSearch } from "wouter";
 import { useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -26,9 +26,16 @@ type CandidateForm = z.infer<typeof candidateSchema>;
 
 export default function LoginPage() {
   const [, setLocation] = useLocation();
+  const search = useSearch();
   const queryClient = useQueryClient();
   const { toast } = useToast();
   const [activeTab, setActiveTab] = useState<"admin" | "candidate">("admin");
+
+  useEffect(() => {
+    const tab = new URLSearchParams(search).get("tab");
+    if (tab === "candidate") setActiveTab("candidate");
+    else setActiveTab("admin");
+  }, [search]);
 
   const adminLogin = useAdminLogin();
   const candidateLogin = useCandidateLogin();

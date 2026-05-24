@@ -7,6 +7,7 @@ import { CandidateLayout } from "@/components/candidate-layout";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import NotFound from "@/pages/not-found";
 import LoginPage from "@/pages/login";
+import LandingPage from "@/pages/landing";
 
 import Dashboard from "@/pages/dashboard";
 import QuizList from "@/pages/quizzes/index";
@@ -92,6 +93,7 @@ function AppRouter() {
   }
 
   if (!user) {
+    if (location === "/") return <LandingPage />;
     return <Redirect to="/login" />;
   }
 
