@@ -1,0 +1,45 @@
+1. 🔄 Replace the Logo
+Remove the current logo and replace it with a new one that is:
+
+Built as an inline SVG (no external images or fonts for the logo mark)
+Visually relevant to a quiz / recruitment / assessment theme
+Ideas to use as the logo mark:
+
+A brain with a checkmark inside it
+A document/clipboard with a pencil and tick
+A shield with a graduation cap
+A chat bubble containing a question mark and checkmark
+
+
+Logo should have two parts: an icon mark (SVG) + the text "RecruIQ" in bold beside it
+The icon should use the exact same colors already used in the landing page — do not introduce any new colors
+Replace the logo everywhere it appears: navbar, footer, login card
+
+
+2. 🎨 Apply the Same Landing Page Design System Inside the App
+After Admin login and Candidate login, the interior screens should visually match the landing page exactly — use the same colors, fonts, gradients, and component styles already established. Do not introduce anything new.
+Apply consistently across all post-login screens:
+
+Same Google Font already used on the landing page
+Same background colors, card styles, and surface colors already used
+Same button styles, gradients, and hover effects already used
+Same form input styles, focus rings, and field backgrounds already used
+Same badge and pill styles for status indicators
+Same navbar style as the landing page sticky header
+Same sidebar style consistent with the landing page's dark/light theme
+Same toast notification style
+Smooth fade-in transition when entering the dashboard after login
+
+Both Admin and Candidate dashboards should have:
+
+The updated logo in the top-left of the sidebar or navbar
+A fully consistent layout — no sudden visual style change after login
+Logout button styled consistently, placed in sidebar footer or navbar
+
+
+Scope:
+
+Do NOT change any existing functionality
+Do NOT introduce new colors, fonts, or design patterns — only use what already exists in the landing page
+Only update: the logo SVG + all visual styling inside the post-login screens
+Keep all existing routes, logic, and data intact

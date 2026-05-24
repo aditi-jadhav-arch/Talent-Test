@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Link } from "wouter";
 import "./landing.css";
+import { LogoIcon } from "@/components/logo";
 
 /* ── Inline SVG helpers ─────────────────────────────────────────────── */
 
@@ -190,7 +191,7 @@ export default function LandingPage() {
       {/* ── Navbar ── */}
       <nav className="lp-nav" ref={navRef}>
         <a href="#" className="lp-nav-logo">
-          <span className="lp-nav-logo-icon">R</span>
+          <LogoIcon size={32} />
           RecruIQ
         </a>
         <div className="lp-nav-btns">
@@ -396,7 +397,7 @@ export default function LandingPage() {
         <div className="lp-footer-inner">
           <div>
             <a href="#" className="lp-footer-logo">
-              <span className="lp-footer-logo-icon">R</span>
+              <LogoIcon size={28} />
               RecruIQ
             </a>
             <p className="lp-footer-tagline">Hire Smarter. Assess Better.</p>

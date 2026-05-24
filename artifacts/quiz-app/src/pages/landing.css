@@ -53,12 +53,8 @@
   text-decoration: none;
 }
 .lp-nav-logo-icon {
-  width: 36px; height: 36px;
-  background: var(--blue);
-  border-radius: 9px;
   display: flex; align-items: center; justify-content: center;
-  color: white;
-  font-size: 1rem; font-weight: 800;
+  flex-shrink: 0;
 }
 
 .lp-nav-btns { display: flex; gap: 10px; align-items: center; }
@@ -540,11 +536,8 @@
   text-decoration: none;
 }
 .lp-footer-logo-icon {
-  width: 32px; height: 32px;
-  background: var(--blue);
-  border-radius: 8px;
   display: flex; align-items: center; justify-content: center;
-  color: white; font-size: .85rem; font-weight: 800;
+  flex-shrink: 0;
 }
 .lp-footer-tagline {
   font-size: .8rem;

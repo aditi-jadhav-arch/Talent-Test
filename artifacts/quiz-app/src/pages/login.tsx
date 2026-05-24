@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation, useSearch } from "wouter";
+import { LogoIcon } from "@/components/logo";
 import { useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -84,17 +85,20 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-muted/30">
-      <div className="w-full max-w-md space-y-8 p-8">
+    <div
+      className="min-h-screen flex items-center justify-center app-fade-in"
+      style={{ background: "linear-gradient(135deg, #0a3d7a 0%, #0d72d6 55%, #3b9eff 100%)" }}
+    >
+      <div className="w-full max-w-md space-y-8 p-6">
         <div className="text-center">
-          <div className="inline-flex items-center justify-center size-12 rounded-xl bg-primary text-primary-foreground font-bold text-2xl mb-4">
-            R
+          <div className="inline-flex items-center justify-center mb-4">
+            <LogoIcon size={52} />
           </div>
-          <h1 className="text-3xl font-bold tracking-tight text-foreground">RecruIQ</h1>
-          <p className="mt-2 text-muted-foreground text-sm">Recruitment Assessment Platform</p>
+          <h1 className="text-3xl font-bold tracking-tight text-white">RecruIQ</h1>
+          <p className="mt-2 text-white/70 text-sm">Recruitment Assessment Platform</p>
         </div>
 
-        <div className="bg-card border rounded-xl shadow-sm p-6">
+        <div className="p-6" style={{ background: "white", borderRadius: "16px", boxShadow: "0 12px 48px rgba(0,0,0,.18), 0 2px 12px rgba(0,0,0,.10)" }}>
           <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as "admin" | "candidate")}>
             <TabsList className="w-full mb-6">
               <TabsTrigger value="admin" className="flex-1 gap-2" data-testid="tab-admin">
